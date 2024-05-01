@@ -256,6 +256,8 @@ jobs:
           poetry run pip install -t package dist/*.whl
           mv package/podaac/hitide_backfill_post_step ../
           mv package/podaac/hitide_backfill_sqs_to_step ../
+          ls -la 
+          ls -la package
           cd package/; zip -r ../terraform/hitide-backfill-lambda.zip . -x '*.pyc'
           cd ../; cd terraform; zip -r ../hitide-backfill-lambdas-${{ env.the_version }}.zip *
 
