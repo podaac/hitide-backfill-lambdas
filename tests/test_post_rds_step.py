@@ -8,7 +8,8 @@ import podaac.hitide_backfill_post_step.lambda_handler as lambda_handler
 import podaac.hitide_backfill_post_step.utils as utils
 import json
 import boto3
-from moto import mock_ssm, mock_stepfunctions, mock_sts, mock_sqs
+from moto import mock_aws
+
 from mock import patch
 import os
 
@@ -83,10 +84,7 @@ def generate_input(step_arn, status):
     }
     return lambda_input
 
-@mock_sqs
-@mock_stepfunctions
-@mock_ssm
-@mock_sts
+@mock_aws
 class TestHitideBackfillPostStep(unittest.TestCase):
 
     def setup_method(self, method):

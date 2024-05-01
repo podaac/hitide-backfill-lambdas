@@ -10,7 +10,7 @@ import os
 import unittest
 import boto3
 import json
-from moto import mock_sts, mock_stepfunctions, mock_sqs, mock_ssm
+from moto import mock_aws
 from podaac.hitide_backfill_sqs_to_step import lambda_handler
 import multiprocessing as mp
 
@@ -31,10 +31,7 @@ step_input = {
     "dmrpp": True
 }
 
-@mock_ssm
-@mock_sqs
-@mock_stepfunctions
-@mock_sts
+@mock_aws
 class TestHitideBackfillSqsToStep(unittest.TestCase):
 
     def _get_account_id(self):
