@@ -14,7 +14,7 @@ from moto import mock_aws
 from podaac.hitide_backfill_sqs_to_step import lambda_handler
 import multiprocessing as mp
 
-region = "us-west-2"
+region = os.environ.get("REGION")
 simple_definition = (
     '{"Comment": "An example of the Amazon States Language using a choice state.",'
     '"StartAt": "DefaultState",'
