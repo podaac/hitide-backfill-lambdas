@@ -1,0 +1,11 @@
+FORGE_STEP_ARN="arn:aws:states:us-east-1:123456789012:stateMachine:forge"
+TIG_STEP_ARN="arn:aws:states:us-east-1:123456789012:stateMachine:tig"
+STEP_RETRY="3"
+REGION="us-east-1"
+
+DB_NAME_SSM = "db_name"
+DB_HOST_SSM = "db_host"
+DB_USER_PASS_SSM = "pass"
+DB_USER_NAME_SSM = "user"
+
+SQS_URL="https://us-west-2.queue.amazonaws.com/123456789012/test_queue"
