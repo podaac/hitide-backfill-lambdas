@@ -2,6 +2,7 @@ FORGE_STEP_ARN="arn:aws:states:us-east-1:123456789012:stateMachine:forge"
 TIG_STEP_ARN="arn:aws:states:us-east-1:123456789012:stateMachine:tig"
 STEP_RETRY="3"
 REGION="us-east-1"
+AWS_DEFAULT_REGION="us-east-1"
 
 DB_NAME_SSM = "db_name"
 DB_HOST_SSM = "db_host"
