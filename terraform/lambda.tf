@@ -1,5 +1,5 @@
 resource "aws_lambda_function" "backfill_post_step" {
-  filename      = "${path.module}/hitide-backfill-post-step-lambda.zip"
+  filename      = "${path.module}/hitide-backfill-lambda.zip"
   function_name = "${var.prefix}-hitide-backfill-post-step"
   source_code_hash = filebase64sha256("${path.module}/hitide-backfill-lambda.zip")
   handler       = "hitide_backfill_post_step.lambda_handler.lambda_handler"
@@ -36,7 +36,7 @@ resource "aws_lambda_function" "backfill_post_step" {
 }
 
 resource "aws_lambda_function" "bootstrap_db" {
-  filename      = "${path.module}/hitide-backfill-post-step-lambda.zip"
+  filename      = "${path.module}/hitide-backfill-lambda.zip"
   function_name = "${var.prefix}-hitide-backfill-bootstrap-db"
   source_code_hash = filebase64sha256("${path.module}/hitide-backfill-lambda.zip")
   handler       = "hitide_backfill_post_step.bootstrap_db.lambda_handler"
@@ -67,7 +67,7 @@ resource "aws_lambda_function" "bootstrap_db" {
 }
 
 resource "aws_lambda_function" "recount-cron" {
-  filename      = "${path.module}/hitide-backfill-post-step-lambda.zip"
+  filename      = "${path.module}/hitide-backfill-lambda.zip"
   function_name = "${var.prefix}-hitide-backfill-recount-cron"
   source_code_hash = filebase64sha256("${path.module}/hitide-backfill-lambda.zip")
   handler       = "hitide_backfill_post_step.recount_cron.lambda_handler"
@@ -99,7 +99,7 @@ resource "aws_lambda_function" "recount-cron" {
 
 
 resource "aws_lambda_function" "backfill_sqs_to_step" {
-  filename      = "${path.module}/hitide-backfill-sqs-to-step-lambda.zip"
+  filename      = "${path.module}/hitide-backfill-lambda.zip"
   function_name = "${var.prefix}-hitide-backfill-sqs-to-step"
   source_code_hash = filebase64sha256("${path.module}/hitide-backfill-lambda.zip")
   handler       = "hitide_backfill_sqs_to_step.lambda_handler.lambda_handler"
