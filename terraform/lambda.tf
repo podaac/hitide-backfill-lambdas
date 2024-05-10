@@ -4,7 +4,7 @@ resource "aws_lambda_function" "backfill_post_step" {
   source_code_hash = filebase64sha256("${path.module}/hitide-backfill-lambda.zip")
   handler       = "hitide_backfill_post_step.lambda_handler.lambda_handler"
   role          = var.lambda_role
-  runtime       = "python3.9"
+  runtime       = "python3.12"
   timeout       = var.timeout
   memory_size   = var.memory_size
 
