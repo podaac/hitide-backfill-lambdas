@@ -180,7 +180,7 @@ jobs:
           poetry version ${{ env.the_version }}
 
       #########################################################################
-      # Install
+      # Install & Test & Snyk
       #########################################################################
       # NOTE: This step is platform-specific
       # These are gradle-specific steps for installing the application
@@ -188,6 +188,7 @@ jobs:
         run: |
           pip install pylint
           pip install pytest
+          poetry build
           poetry install
 
       # This is where tests go
@@ -197,16 +198,29 @@ jobs:
           poetry run flake8 podaac
           poetry run pytest --junitxml=build/reports/pytest.xml --cov=podaac/ --cov-report=html -m "not aws and not integration" tests/
 
+      - name: Run Snyk as a blocking step
+        uses: snyk/actions/python@master
+        env:
+            SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: test
+          args: >
+              --org=${{ secrets.SNYK_ORG_ID }}
+              --project-name=${{ github.repository }}
+              --severity-threshold=high
+              --fail-on=all
+
+      - name: Run Snyk on Python
+        uses: snyk/actions/python@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: monitor
+          args: >
+            --org=${{ secrets.SNYK_ORG_ID }}
+            --project-name=${{ github.repository }}
+
       ## TODO: Find out where the test report goes
-
-
-      #########################################################################
-      # Build
-      #########################################################################
-      - name: Install Software
-        run: |
-          poetry build
-
 
       #########################################################################
       # Publish new version numbers
@@ -252,6 +266,13 @@ jobs:
       # Publish release to releases
       #########################################################################
       - name: Create Zip release
+        if: |
+          github.ref == 'refs/heads/develop' ||
+          github.ref == 'refs/heads/main'    ||
+          startsWith(github.ref, 'refs/heads/release') ||
+          github.event.head_commit.message == '/deploy sit' ||
+          github.event.head_commit.message == '/deploy uat' ||
+          github.event.head_commit.message == '/deploy sandbox'      
         run: |
           poetry run pip install -t package dist/*.whl
           mv package/podaac/hitide_backfill_post_step package
