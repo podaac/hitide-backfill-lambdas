@@ -10,11 +10,11 @@ import os
 import unittest
 import boto3
 import json
-from moto import mock_sts, mock_stepfunctions, mock_sqs, mock_ssm
+from moto import mock_aws
 from podaac.hitide_backfill_sqs_to_step import lambda_handler
 import multiprocessing as mp
 
-region = "us-west-2"
+region = os.environ.get("REGION")
 simple_definition = (
     '{"Comment": "An example of the Amazon States Language using a choice state.",'
     '"StartAt": "DefaultState",'
@@ -31,10 +31,7 @@ step_input = {
     "dmrpp": True
 }
 
-@mock_ssm
-@mock_sqs
-@mock_stepfunctions
-@mock_sts
+@mock_aws
 class TestHitideBackfillSqsToStep(unittest.TestCase):
 
     def _get_account_id(self):
@@ -60,7 +57,7 @@ class TestHitideBackfillSqsToStep(unittest.TestCase):
         sqs = boto3.resource('sqs', region_name=region)
         self.queue = sqs.create_queue(QueueName='test_queue')
 
-        self.ssm_client = boto3.client("ssm", region_name="us-west-2")
+        self.ssm_client = boto3.client("ssm", region_name="us-east-1")
         self.ssm_client.put_parameter(
             Name="throttle_limit", Description="A test parameter", Value="1", Type="String"
         )
@@ -85,8 +82,8 @@ class TestHitideBackfillSqsToStep(unittest.TestCase):
 
         process_num_messages = 1
         sqs_url = os.environ.get("SQS_URL")
-        sqs_client = boto3.client('sqs')
-        client = boto3.client('stepfunctions')
+        sqs_client = boto3.client('sqs', region_name=region)
+        client = boto3.client('stepfunctions', region_name=region)
         tig_step_arn = self.state_machine_arn
         forge_step_arn = self.state_machine_arn
         dmrpp_step_arn = self.state_machine_arn
@@ -115,8 +112,8 @@ class TestHitideBackfillSqsToStep(unittest.TestCase):
 
         process_num_messages = 1
         sqs_url = os.environ.get("SQS_URL")
-        sqs_client = boto3.client('sqs')
-        client = boto3.client('stepfunctions')
+        sqs_client = boto3.client('sqs', region_name=region)
+        client = boto3.client('stepfunctions', region_name=region)
         tig_step_arn = self.state_machine_arn
         forge_step_arn = self.state_machine_arn
         dmrpp_step_arn = self.state_machine_arn
