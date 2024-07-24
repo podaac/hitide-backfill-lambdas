@@ -7,13 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [unreleased]
 
 ### Added
+- Migration into public github
+- Combine hitide-backfill-post-step lambda and hitide-backfill-sqs-to-step into one repo
 ### Deprecated
 ### Removed
 ### Fixed
 ### Security
 
 
-## [0.3.0]
+## [0.3.0] hitide-backfill-post-step
 
 ### Added
 - Update lambda use arm architecture
@@ -23,8 +25,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed lambdas to make to python 3.9
 ### Security
 
+## [0.3.0] hitide-backfill-sqs-to-step
 
-## [0.2.2]
+### Added
+ - Update lambda to use arm architechture
+### Deprecated
+### Removed
+### Fixed
+### Security
+
+
+## [0.2.2] hitide-backfill-post-step
 
 ### Added
   - Updated python version to 3.9, poetry version to 1.5.1, and dependency libraries
@@ -34,7 +45,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 
 
-## [0.2.1]
+## [0.2.1] hitide-backfill-post-step
 
 ### Added
 ### Deprecated
@@ -45,8 +56,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Added cron job to calculate db counts
 ### Security
 
+## [0.2.1] hitide-backfill-sqs-to-step
 
-## [0.2.0]
+### Added
+  - Updated python version to 3.9, poetry version to 1.5.1, and dependency libraries
+### Deprecated
+### Removed
+### Fixed
+### Security
+
+
+## [0.2.0] hitide-backfill-post-step
 
 ### Added
 - **PODAAC-5229
@@ -57,13 +77,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Security
 
+## [0.2.0] hitide-backfill-sqs-to-step
 
-## [0.1.0]
+### Added
+- **PODAAC-5127**
+  - Added in ability to create dmrpp workflows and parallelized step function creation.
+### Deprecated
+### Removed
+### Fixed
+### Security
+
+
+## [0.1.0] hitide-backfill-post-step
 
 ### Added
 - **PODAAC-4424**
   - Implementation of hitide backfill post step function lambda.
   - add mysql db
+### Deprecated
+### Removed
+### Fixed
+### Security
+
+## [0.1.0] hitide-backfill-sqs-to-step
+
+### Added
+- **PODAAC-4424**
+  - Implementation of hitide backfill sqs to step function lambda.
 ### Deprecated
 ### Removed
 ### Fixed
