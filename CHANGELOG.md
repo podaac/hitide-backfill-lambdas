@@ -7,8 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [unreleased]
 
 ### Added
-- Migration into public github
-- Combine hitide-backfill-post-step lambda and hitide-backfill-sqs-to-step into one repo
+### Deprecated
+### Removed
+### Fixed
+### Security
+
+
+## [0.4.0]
+
+### Added
+- Migrated into public Github [hitide-backfill-lambdas](https://github.com/podaac/hitide-backfill-lambdas) repo
+  - Combined hitide-backfill-post-step lambda and hitide-backfill-sqs-to-step into one repo
 ### Deprecated
 ### Removed
 ### Fixed
@@ -24,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Fixed lambdas to make to python 3.9
 ### Security
+
 
 ## [0.3.0] hitide-backfill-sqs-to-step
 
@@ -56,6 +66,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Added cron job to calculate db counts
 ### Security
 
+
 ## [0.2.1] hitide-backfill-sqs-to-step
 
 ### Added
@@ -76,6 +87,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 ### Fixed
 ### Security
+
 
 ## [0.2.0] hitide-backfill-sqs-to-step
 
@@ -98,6 +110,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 ### Fixed
 ### Security
+
 
 ## [0.1.0] hitide-backfill-sqs-to-step
 
