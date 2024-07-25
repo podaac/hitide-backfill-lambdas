@@ -79,6 +79,7 @@ def lambda_handler(event, context):  # pylint: disable=unused-argument, disable-
         granule_start_time = parser.parse(cli_params.get('granule_start'))
         granule_end_time = parser.parse(cli_params.get('granule_end'))
 
+        sf_type = cli_execution = None
         if step_arn == tig_step_arn:
             sf_type = "TIG"
         elif step_arn == forge_step_arn:
