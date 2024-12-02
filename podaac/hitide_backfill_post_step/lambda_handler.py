@@ -155,6 +155,7 @@ def lambda_handler(event, context):  # pylint: disable=unused-argument, disable-
                 logger.error(ex)
 
 
+# pylint: disable=too-many-positional-arguments
 def cli_execution_get_or_create(session, execution_uuid, username, short_name, version, start, end):
     """Get or create cli execution in database"""
 
