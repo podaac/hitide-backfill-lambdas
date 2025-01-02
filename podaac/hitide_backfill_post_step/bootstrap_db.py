@@ -6,7 +6,6 @@ from .models import Base
 from . import utils
 
 
-# pylint: disable=too-many-positional-arguments
 def create_user(host, root_user, root_pass, new_user, user_pass, db_name):
     """Function to create database user and grant permission to db"""
 

@@ -27,7 +27,6 @@ def create_single_step(cma_message, step_arn, client):
     )
 
 
-# pylint: disable=too-many-positional-arguments
 def create_stepfunctions(process_num_messages, sqs_url, sqs_client, client,  tig_step_arn,
                          forge_step_arn, dmrpp_step_arn, visibility_timeout, conn=None):
     """multi process function to create all step functions"""
