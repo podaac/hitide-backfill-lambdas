@@ -1,7 +1,11 @@
 terraform {
   required_providers {
-    aws  = ">= 2.31.0"
-    null = "~> 2.1"
+    aws = {
+      source  = "hashicorp/aws"
+    }
+    null = {
+      source  = "hashicorp/null"
+    }
   }
 }
 
