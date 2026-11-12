@@ -12,6 +12,9 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  PYTHON_VERSION: '3.12'
+  POETRY_VERSION: '2.3.2'
+  TERRAFORM_VERSION: '1.12.2'
 
 jobs:
   # First job in the workflow installs and verifies the software
@@ -26,15 +29,13 @@ jobs:
       # NOTE: This step is platform-specific
       # Checks out this repository and sets up the build/test environment with 
       # gradle
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: actions/setup-python@v6
         with:
-          python-version: '3.12'
+          python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Install Poetry
-        uses: abatilo/actions-poetry@v4
-        with:
-          poetry-version: 2.3.2
+        run: pipx install poetry==$POETRY_VERSION --python "$(which python)"
 
 
       #########################################################################
